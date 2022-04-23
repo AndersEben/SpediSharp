@@ -11,7 +11,7 @@ namespace SpediSharp
 {
     public class Spediteur
     {
-        public async Task<t_Spieler> GetUserLogin(ReqUserLogin user)
+        public t_Spieler GetUserLogin(ReqUserLogin user)
         {
             t_Spieler result = null;
 
@@ -19,9 +19,11 @@ namespace SpediSharp
 
             url += user.GetString();
 
-            var response = await Functions.GETRequest(url, "", Options.TokenType.Bearer, "");
+            var response = Functions.GETRequest(url, "", Options.TokenType.Bearer, "");
+            var waiter = response.Wait(new TimeSpan(0,0,5));
 
-            result = JsonConvert.DeserializeObject<t_Spieler>(response);
+            if(waiter)
+                result = JsonConvert.DeserializeObject<t_Spieler>(response.Result);
 
             return result;
         }

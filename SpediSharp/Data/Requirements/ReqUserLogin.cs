@@ -8,15 +8,18 @@ namespace SpediSharp.Data.Requirements
     {
         public string mail { get; internal set; }
         public string pass { get; internal set; }
-
         public bool userlogin { get; internal set; }
 
-        public ReqUserLogin(string mail, string passwort)
+        public ReqUserLogin(string email, string passwort)
         {
+            if (email == null || email == "" || passwort == null || passwort == "")
+                throw new ArgumentException("Parameter invalid");
+
             this.userlogin = true;
-            this.mail = mail;
+            this.mail = email;
             this.pass = passwort;
         }
+
 
         public string GetString()
         {
@@ -24,7 +27,7 @@ namespace SpediSharp.Data.Requirements
 
             bool start = true;
 
-            foreach (var field in typeof(ReqUserLogin).GetFields())
+            foreach (var field in typeof(ReqUserLogin).GetProperties())
             {
                 if (field.GetValue(this) != null)
                 {
