@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SpediSharp
 {
-    class Spediteur
+    public class Spediteur
     {
         public async Task<t_Spieler> GetUserLogin(ReqUserLogin user)
         {
