@@ -42,7 +42,7 @@ namespace SpediSharp.Data
                 }
                 catch (Exception)
                 {
-                    result = "";
+                    result = null;
                 }
             };
 

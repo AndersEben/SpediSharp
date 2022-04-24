@@ -4,9 +4,11 @@
     <TargetFrameworks>netstandard2.0;net45;net6.0-windows</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright>AndersEben</Copyright>
-    <FileVersion>1.0.0.1</FileVersion>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <Version>1.0.1</Version>
+    <FileVersion>1.0.0.2</FileVersion>
+    <AssemblyVersion>1.0.0.2</AssemblyVersion>
+    <Version>1.0.2</Version>
+    <Description>Wrapper for https://github.com/GMoney597/Twitch-Spediteur</Description>
+    <Authors>AndersEben</Authors>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpediSharp.Data.Klassen;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,16 +19,19 @@ namespace SpediSharp.Data.Requirements
 
             foreach (var field in typeof(T).GetProperties())
             {
-                if (field.GetValue(this) != null)
+                if(field.GetType() != typeof(t_Spieler))
                 {
+                    if (field.GetValue(this) != null)
+                    {
 
-                    if (!start)
-                        result += "&";
+                        if (!start)
+                            result += "&";
 
-                    result += field.Name + "=" + field.GetValue(this);
+                        result += field.Name + "=" + field.GetValue(this);
 
-                    if (start)
-                        start = !start;
+                        if (start)
+                            start = !start;
+                    }
                 }
             }
 
