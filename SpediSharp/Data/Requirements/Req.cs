@@ -19,8 +19,6 @@ namespace SpediSharp.Data.Requirements
 
             foreach (var field in typeof(T).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance))
             {
-                Console.WriteLine(field);
-                Console.WriteLine(typeof(t_Spieler));
 
                 if(field.PropertyType.FullName != typeof(t_Spieler).ToString())
                 {
@@ -43,7 +41,7 @@ namespace SpediSharp.Data.Requirements
 
         public bool CheckProp()
         {
-            foreach (var prop in typeof(T).GetProperties())
+            foreach (var prop in typeof(T).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance))
             {
                 if (prop.GetValue(this) == null || prop.GetValue(this).ToString() == "")
                     return false;

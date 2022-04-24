@@ -22,13 +22,5 @@ namespace SpediSharp.Data.Requirements
                 throw new ArgumentNullException("Parameter invalid");
         }
 
-        /// <summary>
-        /// GetPlayer
-        /// </summary>
-        /// <returns>Returns current set Player</returns>
-        public t_Spieler GetPlayer()
-        {
-            return this.player;
-        }
     }
 }

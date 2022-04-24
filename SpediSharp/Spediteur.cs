@@ -70,17 +70,26 @@ namespace SpediSharp
         {
             t_Spieler result = null;
 
-            string url = URLdata.BaseURL + URLdata.User;
+            string url = URLdata.BaseURL + URLdata.UserPost;
 
             url += user.GetString();
 
-            string data = JsonConvert.SerializeObject(user.GetPlayer());
+            string data = JsonConvert.SerializeObject(user.player);
             var response = Functions.POSTRequest(url,data);
 
             var waiter = response.Wait(new TimeSpan(0, 0, 5));
 
             if (waiter)
-                result = JsonConvert.DeserializeObject<t_Spieler>(response.Result);
+            {
+                try
+                {
+                    result = JsonConvert.DeserializeObject<t_Spieler>(response.Result);
+                }
+                catch (Exception)
+                {
+                    result = null;
+                }
+            }
 
             return result;
         }
@@ -99,7 +108,16 @@ namespace SpediSharp
             var waiter = response.Wait(new TimeSpan(0, 0, 5));
 
             if (waiter)
-                result = JsonConvert.DeserializeObject<t_Spieler>(response.Result);
+            {
+                try
+                {
+                    result = JsonConvert.DeserializeObject<t_Spieler>(response.Result);
+                }
+                catch (Exception)
+                {
+                    result = null;
+                }
+            }
 
             return result;
         }
