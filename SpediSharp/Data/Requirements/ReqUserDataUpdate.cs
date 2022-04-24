@@ -25,7 +25,7 @@ namespace SpediSharp.Data.Requirements
         /// <summary>
         /// GetPlayer
         /// </summary>
-        /// <returns>current set Player</returns>
+        /// <returns>Returns current set Player</returns>
         public t_Spieler GetPlayer()
         {
             return this.player;
