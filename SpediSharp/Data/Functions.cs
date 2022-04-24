@@ -51,6 +51,33 @@ namespace SpediSharp.Data
             return result;
         }
 
+        public static string TestRequest(string url, string data)
+        {
+            var baseAddress = "https://www.gaming.anderseben.de/api/user/index.php?userdata=true";
+
+            var http = (HttpWebRequest)WebRequest.Create(new Uri(baseAddress));
+            http.Accept = "application/json";
+            http.ContentType = "application/json";
+            http.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)";
+            http.Method = "POST";
+
+            string parsedContent = data;
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            Byte[] bytes = encoding.GetBytes(parsedContent);
+
+            System.IO.Stream newStream = http.GetRequestStream();
+            newStream.Write(bytes, 0, bytes.Length);
+            newStream.Close();
+
+            var response = http.GetResponse();
+
+            var stream = response.GetResponseStream();
+            var sr = new System.IO.StreamReader(stream);
+            var content = sr.ReadToEnd();
+
+            return content;
+        }
+
         public static async Task<string> POSTRequest(string url, string data, string clientID = null, TokenType type = TokenType.Bearer, string token = null)
         {
 
@@ -58,7 +85,8 @@ namespace SpediSharp.Data
 
             byte[] result = null;
 
-            _wc.UploadDataCompleted += (o, e) => {
+            _wc.UploadDataCompleted += (o, e) =>             
+            {
                 try
                 {
                     result = e.Result;
@@ -69,10 +97,18 @@ namespace SpediSharp.Data
                 }
             };
 
-            await _wc.UploadDataTaskAsync(url, "POST", System.Text.Encoding.UTF8.GetBytes(data));
+            _wc.UploadStringCompleted += (o, e) =>
+            {
+
+            };
+
+
+            var ttt = await _wc.UploadDataTaskAsync(url, "POST", System.Text.Encoding.UTF8.GetBytes(data));
+            //var ttt2 = await _wc.UploadStringTaskAsync(new Uri(url), "POST", data);
 
             return System.Text.Encoding.UTF8.GetString(result);
 
         }
+
     }
 }

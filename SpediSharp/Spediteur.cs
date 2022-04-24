@@ -85,15 +85,15 @@ namespace SpediSharp
             return result;
         }
 
-        public t_Spieler InsertUser(ReqUserDataUpdate user)
+        public t_Spieler InsertUser(ReqUserInsert user)
         {
             t_Spieler result = null;
 
-            string url = URLdata.BaseURL + URLdata.User;
+            string url = URLdata.BaseURL + URLdata.UserPost;
 
             url += user.GetString();
 
-            string data = JsonConvert.SerializeObject(user.GetPlayer());
+            string data = JsonConvert.SerializeObject(user.player);
             var response = Functions.POSTRequest(url, data);
 
             var waiter = response.Wait(new TimeSpan(0, 0, 5));

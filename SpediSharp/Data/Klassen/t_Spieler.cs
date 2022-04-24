@@ -22,5 +22,10 @@ namespace SpediSharp.Data.Klassen
         public float Kontostand { get; internal set; }
         [JsonProperty]
         public string Startort { get; internal set; }
+
+        public t_Spieler()
+        {
+
+        }
     }
 }

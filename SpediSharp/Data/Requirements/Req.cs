@@ -17,9 +17,12 @@ namespace SpediSharp.Data.Requirements
 
             bool start = true;
 
-            foreach (var field in typeof(T).GetProperties())
+            foreach (var field in typeof(T).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance))
             {
-                if(field.GetType() != typeof(t_Spieler))
+                Console.WriteLine(field);
+                Console.WriteLine(typeof(t_Spieler));
+
+                if(field.PropertyType.FullName != typeof(t_Spieler).ToString())
                 {
                     if (field.GetValue(this) != null)
                     {

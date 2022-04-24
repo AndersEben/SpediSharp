@@ -11,6 +11,7 @@ namespace SpediSharp.Data
     {
         public static string BaseURL { get; } = "https://www.gaming.anderseben.de/";
         public static string User { get; } = "api/user";
+        public static string UserPost { get; } = "api/user/index.php";
         public static string Fahrzeuge { get; } = "api/fahrzeuge";
     }
 }
