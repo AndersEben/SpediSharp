@@ -36,7 +36,14 @@ namespace SpediSharp.Data
 
             _wc.DownloadStringCompleted += (o, e) =>
             {
-                result = e.Result;
+                try
+                {
+                    result = e.Result;
+                }
+                catch (Exception)
+                {
+                    result = "";
+                }
             };
 
             await _wc.DownloadStringTaskAsync(url);
@@ -52,7 +59,14 @@ namespace SpediSharp.Data
             byte[] result = null;
 
             _wc.UploadDataCompleted += (o, e) => {
-                result = e.Result;
+                try
+                {
+                    result = e.Result;
+                }
+                catch (Exception)
+                {
+                    result = null;
+                }
             };
 
             await _wc.UploadDataTaskAsync(url, "POST", System.Text.Encoding.UTF8.GetBytes(data));
