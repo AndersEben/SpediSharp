@@ -113,8 +113,9 @@ namespace SpediSharp
                 {
                     result = JsonConvert.DeserializeObject<t_Spieler>(response.Result);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Console.WriteLine(ex.ToString());
                     result = null;
                 }
             }

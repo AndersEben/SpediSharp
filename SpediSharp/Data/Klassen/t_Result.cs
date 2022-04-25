@@ -12,8 +12,13 @@ namespace SpediSharp.Data.Klassen
     {
 
         [JsonProperty]
-        public string type { get; internal set; }
+        public string Typ { get; internal set; }
         [JsonProperty]
-        public string result { get; internal set; }
+        public string TypMessage { get; internal set; }
+
+        public void SetTyp(string typ)
+        {
+            this.Typ = typ;
+        }
     }
 }

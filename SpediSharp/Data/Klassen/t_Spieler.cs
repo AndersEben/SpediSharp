@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SpediSharp.Data.Klassen
 {
-    public class t_Spieler
+    public class t_Spieler : t_Result
     {
 
         [JsonProperty]
@@ -23,9 +23,5 @@ namespace SpediSharp.Data.Klassen
         [JsonProperty]
         public string Startort { get; internal set; }
 
-        public t_Spieler()
-        {
-
-        }
     }
 }
