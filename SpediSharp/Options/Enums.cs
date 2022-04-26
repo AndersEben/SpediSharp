@@ -8,4 +8,13 @@ namespace SpediSharp.Options
     {
         Bearer
     }
+
+    public enum JsonType
+    {
+        get,
+        insert,
+        update,
+        error,
+        ok
+    }
 }

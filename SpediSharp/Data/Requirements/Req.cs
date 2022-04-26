@@ -20,7 +20,7 @@ namespace SpediSharp.Data.Requirements
             foreach (var field in typeof(T).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance))
             {
 
-                if(field.PropertyType.FullName != typeof(t_Spieler).ToString())
+                if(field.PropertyType.FullName != typeof(t_Spieler).ToString() && field.PropertyType.FullName != typeof(t_Fahrzeuge).ToString())
                 {
                     if (field.GetValue(this) != null)
                     {

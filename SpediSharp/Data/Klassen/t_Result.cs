@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SpediSharp.Options;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,11 +13,11 @@ namespace SpediSharp.Data.Klassen
     {
 
         [JsonProperty]
-        public string Typ { get; internal set; }
+        public JsonType Typ { get; internal set; }
         [JsonProperty]
         public string TypMessage { get; internal set; }
 
-        public void SetTyp(string typ)
+        public void SetTyp(JsonType typ)
         {
             this.Typ = typ;
         }
