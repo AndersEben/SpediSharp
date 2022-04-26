@@ -38,5 +38,12 @@ namespace SpediSharp.Data.Klassen
             this.HatAuftrag = hatauftrag;
             this.Auftragsnummer = auftragsnummer;
         }
+
+        public void DeleteAuftrag(string standort)
+        {
+            this.Standort = standort;
+            this.HatAuftrag = false;
+            this.Auftragsnummer = 0;
+        }
     }
 }

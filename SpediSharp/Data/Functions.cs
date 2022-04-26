@@ -50,6 +50,31 @@ namespace SpediSharp.Data
             return result;
         }
 
+        public static async Task<string> POSTRequest(string url, string data, string clientID = null, TokenType type = TokenType.Bearer, string token = null)
+        {
+
+            WebClient _wc = CreateWebclient(clientID, type, token, true);
+
+            byte[] result = null;
+
+            _wc.UploadDataCompleted += (o, e) =>
+            {
+                try
+                {
+                    result = e.Result;
+                }
+                catch (Exception)
+                {
+                    result = null;
+                }
+            };
+
+            var ttt = await _wc.UploadDataTaskAsync(url, "POST", System.Text.Encoding.UTF8.GetBytes(data));
+
+            return System.Text.Encoding.UTF8.GetString(result);
+
+        }
+
         private static string TestRequest(string url, string data)
         {
             var baseAddress = "https://www.gaming.anderseben.de/api/user/index.php?userdata=true";
@@ -77,30 +102,6 @@ namespace SpediSharp.Data
             return content;
         }
 
-        public static async Task<string> POSTRequest(string url, string data, string clientID = null, TokenType type = TokenType.Bearer, string token = null)
-        {
-
-            WebClient _wc = CreateWebclient(clientID, type, token, true);
-
-            byte[] result = null;
-
-            _wc.UploadDataCompleted += (o, e) =>             
-            {
-                try
-                {
-                    result = e.Result;
-                }
-                catch (Exception)
-                {
-                    result = null;
-                }
-            };
-
-            var ttt = await _wc.UploadDataTaskAsync(url, "POST", System.Text.Encoding.UTF8.GetBytes(data));
-
-            return System.Text.Encoding.UTF8.GetString(result);
-
-        }
 
     }
 }

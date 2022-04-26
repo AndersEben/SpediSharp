@@ -5,9 +5,6 @@ using System.Text;
 
 namespace SpediSharp.Data.Requirements
 {
-    /// <summary>
-    /// ReqUserDataUpdate
-    /// </summary>
     public class ReqUserDataUpdate : Req<ReqUserDataUpdate>
     {
         private bool userdataupdate { get; set; }

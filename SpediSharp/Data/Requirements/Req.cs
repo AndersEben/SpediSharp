@@ -20,7 +20,13 @@ namespace SpediSharp.Data.Requirements
             foreach (var field in typeof(T).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance))
             {
 
-                if(field.PropertyType.FullName != typeof(t_Spieler).ToString() && field.PropertyType.FullName != typeof(t_Fahrzeuge).ToString())
+                if(field.PropertyType.FullName != typeof(t_Spieler).ToString() && 
+                    field.PropertyType.FullName != typeof(t_Fahrzeuge).ToString() &&
+                    field.PropertyType.FullName != typeof(t_Auftraege).ToString() &&
+                    field.PropertyType.FullName != typeof(t_Orte).ToString() &&
+                    field.PropertyType.FullName != typeof(t_Routen).ToString() &&
+                    field.PropertyType.FullName != typeof(t_Spieler_Score).ToString() &&
+                    field.PropertyType.FullName != typeof(t_Waren).ToString())
                 {
                     if (field.GetValue(this) != null)
                     {

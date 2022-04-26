@@ -1,19 +1,18 @@
-﻿using SpediSharp.Data.Klassen;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SpediSharp.Data.Requirements
 {
-    public class ReqUserData : Req<ReqUserData>
+    public class ReqAuftraegeData : Req<ReqAuftraegeData>
     {
+        private bool auftraege { get; set; }
         public int player_id { get; internal set; }
-        private bool userdata { get; set; }
 
-        public ReqUserData(t_Spieler player)
+        public ReqAuftraegeData(int player_id)
         {
-            this.player_id = player.S_ID;
-            this.userdata = true;
+            this.auftraege = true;
+            this.player_id = player_id;
 
             if (!CheckProp())
                 throw new ArgumentNullException("Parameter invalid");

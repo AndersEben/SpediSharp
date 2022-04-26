@@ -5,15 +5,15 @@ using System.Text;
 
 namespace SpediSharp.Data.Requirements
 {
-    public class ReqUserData : Req<ReqUserData>
+    public class ReqWarenInsert : Req<ReqWarenInsert>
     {
-        public int player_id { get; internal set; }
-        private bool userdata { get; set; }
+        private bool wareninsert { get; set; }
+        public t_Waren ware { get; internal set; }
 
-        public ReqUserData(t_Spieler player)
+        public ReqWarenInsert(t_Waren ware)
         {
-            this.player_id = player.S_ID;
-            this.userdata = true;
+            this.wareninsert = true;
+            this.ware = ware;
 
             if (!CheckProp())
                 throw new ArgumentNullException("Parameter invalid");
