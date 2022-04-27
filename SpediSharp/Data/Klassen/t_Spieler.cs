@@ -23,5 +23,15 @@ namespace SpediSharp.Data.Klassen
         [JsonProperty]
         public string Startort { get; internal set; }
 
+        public void SetSpieler(string spielername, string mail, string passwort, float bargeld, float kontostand, string standort)
+        {
+            this.Spielername = spielername;
+            this.Mail = mail;
+            this.Passwort = passwort;
+            this.Bargeld = bargeld;
+            this.Kontostand = kontostand;
+            this.Startort = standort;
+        }
+
     }
 }

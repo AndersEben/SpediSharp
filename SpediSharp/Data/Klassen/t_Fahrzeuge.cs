@@ -26,14 +26,21 @@ namespace SpediSharp.Data.Klassen
         [JsonProperty]
         public int Auftragsnummer { get; internal set; }
 
-        public void SetFahrzeug(int f_id, string bezeichnung, int s_id, bool gekauft, string erwerb, string abgabe, string standort, bool hatauftrag, int auftragsnummer)
+        private DateTime erwerb { get; set; }
+        private DateTime abgabe { get; set; }
+
+        public void SetFahrzeug(int f_id, string bezeichnung, int s_id, bool gekauft, DateTime erwerb, DateTime abgabe, string standort, bool hatauftrag, int auftragsnummer)
         {
             this.F_ID = f_id;
             this.Bezeichnung = bezeichnung;
             this.Spieler_ID = s_id;
             this.IsGekauft = gekauft;
-            this.ErwerbDatum = erwerb;
-            this.Abgabedatum = abgabe;
+
+            this.ErwerbDatum = erwerb.ToString("yyyy-dd-MMThh:mm:ss");
+            this.erwerb = erwerb;
+            this.Abgabedatum = abgabe.ToString("yyyy-dd-MMThh:mm:ss");
+            this.abgabe = abgabe;
+
             this.Standort = standort;
             this.HatAuftrag = hatauftrag;
             this.Auftragsnummer = auftragsnummer;
